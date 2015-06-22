@@ -1,0 +1,125 @@
+* {
+			margin: 0px;
+			padding: 0px;
+			font-family: '微软雅黑';
+		}
+		a {
+			text-decoration: none;
+		}
+		a img {
+			border: none;
+		}
+		.sidebar {
+			position: fixed;
+			width: 3%;
+			height: 100%;
+			background-color: rgb(47, 47, 47);
+		}
+		.sidebar li {
+			padding: 20% 20%;
+		}
+		.sidebar li:hover {
+			background-color: rgb(39, 40, 34);
+		}
+		.sidebar li img {
+			width: 100%;
+			padding: 20% 0%;
+		}
+		.container {
+			width: 97%;
+			padding-left: 3%;
+		}
+		.content {
+			width: 70%;
+			margin: auto;
+			padding-top: 4%;
+			display: none;
+		}
+		.loginbox {
+			text-align: center;
+			display: none;
+		}
+		.loginbox p {
+			padding-top: 3%;
+			text-align: center;
+		}
+		.loginbox h1 {
+			color: rgb(117, 184, 0);
+			font-size: 5.0em;
+		}
+		.inputbox {
+			display: inline-block;
+			margin-top: 2%;
+			width: 60%;
+			
+			border-right: none;
+			border-left: none;
+			border-top: none;
+			border-bottom: solid rgb(117, 185, 0) 3px;
+			border-radius: 3px;
+			font-size: 2.3em;
+		}
+		.btn {
+			display: inline-block;
+			line-height: 3.0em;
+			width: 4%;
+			background-color: rgb(117, 185, 0);
+			border: none;
+		}
+		.guide {
+			text-align: right;
+			font-size: 1.1em;
+			color: gray;
+			padding-bottom: 7%;
+		}
+		.guide span {
+			color: rgb(117, 185, 0);
+		}
+
+		.home {
+			width: 97%;
+			padding-left: 3%;
+			text-align: center;
+			padding-top: 20%;
+			font-size: 5.0em;
+			color: rgb(117, 185, 0);
+			display: none;
+		}
+
+		.articlelist {
+			margin: auto;
+			padding: 6%;
+			width: 70%;
+			font-size: 2.0em;
+			color: rgb(91, 192, 222);
+			display: none;
+		}
+		.articlelist li a {
+			color: rgb(20, 144, 252);
+		}
+		.articlelist li ul a {
+			color: rgb(91, 192, 222);
+		}
+		.articlelist ul ul {
+			margin-left: 5%;
+		}
+
+		.regbox {
+			text-align: center;
+			display: none;
+		}
+		.regbox p {
+			padding-top: 3%;
+			text-align: center;
+		}
+		.regbox h1 {
+			color: rgb(117, 184, 0);
+			font-size: 5.0em;
+		}
+		.errorbox {
+			color: red;
+			display: none;
+		}
+		.codeimg {
+			width: 15%;
+		}
