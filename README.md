@@ -1,0 +1,2 @@
+# MyBlog
+ｔechnical blog
