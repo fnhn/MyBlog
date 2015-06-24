@@ -12,7 +12,6 @@ function showLoginBox() {
 					
 				}
 				else if(data['message'] == 'yes') {
-					$("#logincodeimg").attr("src", "tools/captcha.php?" + Math.random());
 					status = 'loginedbox';
 					update();
 				}
@@ -44,6 +43,8 @@ function showLoginBox() {
 				data = JSON.parse(data);
 				$("#content").html(data['content']);
 			});
+			articleid = value;
+			getCommentList();
 			status="content";
 			update();
 		}
@@ -138,11 +139,12 @@ function showLoginBox() {
 				else {
 					$("#regerror").html(result.reason);
 					$("#regerror").css("display", "block");
+					$("#regcodeimg").attr("src", "tools/captcha.php?" + Math.random());
+					$("#reg_code").val("");
 				}
 				
 			});
-			$("#regcodeimg").attr("src", "tools/captcha.php?" + Math.random());
-			$("#reg_code").val("");
+			
 		}
 		function login() {
 			if(!checkLogin())
@@ -249,11 +251,47 @@ function showLoginBox() {
 			
 		}
 
+		function submitComment() {
+			content = $("#commentcontent").val();
+			$.post('submitcomment.php', {content:content}).done(function(data) {
+				data = JSON.parse(data);
+				if(data.suc) {
+					getCommentList();
+					$("#commenterror").html("");
+					$("#commentcontent").val("");
+				}
+				else {
+					$("#commenterror").html(data['reason']);
+					$("#commenterror").css("display", "block");
+				}
+				
+			});
+		}
+
+		function getCommentList() {
+			$.post('getcommentlist.php', {articleid: articleid}).done(function(data) {
+			
+				data = JSON.parse(data);
+
+				prehtml = "";
+
+				for(var index in data) {
+					prehtml += "<div class=\"commentwraper\"><div class=\"commenticon\"><img src=\"icons/" + data[index].imgid + ".jpg\"></img></div><div class=\"commenttext\"><b>" + data[index].nickname +"</b><b>" + data[index].date +" " + data[index].time + "</b>\
+						<p>" + data[index].content + "</p></div></div>";
+				
+				}
+				
+				$("#oldcommentbox").html(prehtml);
+				
+			});
+		}
+
 		var status = 'home';
 		var logined = false;
 		var typelist = [];
 		var titlelist = [];
 		var imgid = -1;
+		var articleid = -1;
 		var nickname = 'fnhn';
 		window.onload = function() {
 			$.post('islogined.php').done(function(data) {

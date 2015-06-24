@@ -6,12 +6,6 @@
 		echo json_encode($data);
 		exit;
 	}
-	else if($_SESSION['logined'] == 0)
-	{
-		$data['message'] = 'no';
-		echo json_encode($data);
-		exit;
-	}
 	else
 	{
 		$data['message'] = 'yes';

@@ -85,8 +85,22 @@
 		<div class="commentbox" id="commentbox">
 			<li class="commenthead">Comment</li>
 			<div class="hr"></div>
+			<div class="oldcommentbox" id="oldcommentbox">
+				<div class="commentwraper">
+					<div class="commenticon">
+						<img src="icons/8.jpg"></img>
+					</div>
+					<div class="commenttext">
+						<b>nickname</b><b>2015-1-1 15:0:1</b>
+						<p>This is the comment.This is the comment.This is the comment.This is the comment.This is the comment.This is the comment.This is the comment.This is the comment.</p>
+					</div>
+				</div>
+
+				
+			</div>
+			<div class="errorbox" id="commenterror"></div>
 			<textarea class="commentcontentbox" id="commentcontent" placeholder="Type comment here."></textarea><br>
-			<button>Submit</button>
+			<button onclick="submitComment()">Submit</button>
 		</div>
 		
 	</div>

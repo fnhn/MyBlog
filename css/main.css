@@ -3,9 +3,7 @@
 			padding: 0px;
 			font-family: '微软雅黑';
 		}
-		li {
-			list-style: none;
-		}
+		
 		a {
 			text-decoration: none;
 		}
@@ -144,6 +142,7 @@
 		.commentbox {
 			width: 60%;
 			margin: 3% auto;
+			display: none;
 		}
 
 		.commentbox .commentcontentbox {
@@ -173,4 +172,28 @@
 			background-color: rgb(117, 185, 0);
 			height: 2px;
 			margin-bottom: 1%;
+		}
+		.commentbox li {
+			list-style-type: none;
+		}
+
+		.commentbox .commentwraper .commenticon {
+			width: 5%;
+			float: left;
+		}
+		.commentbox .commentwraper .commenticon img {
+			border-radius: 50%;
+			width: 100%;
+		}
+		.commentbox .commentwraper {
+			margin: 3% 2%;
+			overflow: hidden;
+		}
+		.commentbox .commentwraper .commenttext {
+			margin: 0% 3%;
+			width: 88%;
+			float: left;
+		}
+		.commentbox .commentwraper .commenttext b {
+			margin-right: 1%;
 		}

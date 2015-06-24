@@ -69,6 +69,7 @@
 	$_SESSION['logined'] = 1;
 	$_SESSION['username'] = $username;
 	$_SESSION['imgid'] = $arr['img_id'];
+	$_SESSION['userid'] = $arr['id'];
 
 
 	$data['suc'] = 1;

@@ -1,5 +1,6 @@
 <?php
 
+	session_start();
 	$data = array();
 
 	$id = $_POST['id'];
@@ -19,5 +20,9 @@
 	$arr = $article->fetch_assoc();
 	$data['content'] = stripslashes($arr['content']);
 
-	echo json_encode($data, 0);
+	$db->close();
+
+	$_SESSION['articleid'] = $id;
+
+	echo json_encode($data);
 ?>
