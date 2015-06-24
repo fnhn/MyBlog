@@ -2,6 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+	<META HTTP-EQUIV="expires" CONTENT="0">
+
 	<link rel="stylesheet" href="css/main.css" />
 	<script type="text/javascript" src="js/jq.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
@@ -23,6 +27,7 @@
 		</div>
 		<div class="content" id="content" name="status">
 			<h1>This is the content.</h1>
+
 		</div>
 		<div class="home" id="home" name="status">
 			Welcome to Fnhn's Blog.
@@ -73,6 +78,17 @@
 		<div class = "home" id="loginsuc" name="status">
 			Login Success
 		</div>
+		<div class="iconbox" id="iconbox">
+			<img id="icon"></img>
+			<p id="nickname"></p>
+		</div>
+		<div class="commentbox" id="commentbox">
+			<li class="commenthead">Comment</li>
+			<div class="hr"></div>
+			<textarea class="commentcontentbox" id="commentcontent" placeholder="Type comment here."></textarea><br>
+			<button>Submit</button>
+		</div>
+		
 	</div>
 </body>
 </html>

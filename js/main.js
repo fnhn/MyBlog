@@ -3,14 +3,15 @@ function showLoginBox() {
 				return;
 
 			$.post('islogined.php').done(function(data) {
-				if(data == 'no') {
+				data = JSON.parse(data);
+				if(data['message'] == 'no') {
 					$("#logincodeimg").attr("src", "tools/captcha.php?" + Math.random());
 					status = "loginbox";
 					update();
 					
 					
 				}
-				else if(data == 'yes') {
+				else if(data['message'] == 'yes') {
 					$("#logincodeimg").attr("src", "tools/captcha.php?" + Math.random());
 					status = 'loginedbox';
 					update();
@@ -49,13 +50,14 @@ function showLoginBox() {
 		function showRegBox() {
 			if(status == 'regbox')
 				return;
-			status="regbox";
-			update();
+			
 			$("#regcodeimg").attr("src", "tools/captcha.php?" + Math.random());
 			$("#reg_code").val("");
 			$("#reg_username").val("");
 			$("#reg_password").val("");
 			$("#reg_email").val("");
+			status="regbox";
+			update();
 		}
 		function checkReg() {
 			if(!$("#reg_username").val()) {
@@ -157,8 +159,11 @@ function showLoginBox() {
 			}).done(function(data) {
 				var result = JSON.parse(data);
 				if(result.suc) {
+					imgid = result['imgid'];
+					nickname = result['nickname'];
 					status = "loginsuc";
 					update();
+
 				}
 				else {
 					$("#loginerror").html(result.reason);
@@ -172,16 +177,37 @@ function showLoginBox() {
 		}
 		function logout() {
 			$.post("logout.php").done(function(data) {
-			$("#logincodeimg").attr("src", "tools/captcha.php?" + Math.random());
-			status = 'loginbox';
-			update();
+				$("#logincodeimg").attr("src", "tools/captcha.php?" + Math.random());
+				status = 'loginbox';
+				update();
 
+				$("#iconbox").css("display", "none");
+				imgid = -1;
 			});
+
 		}
 		
 		function update() {
 			$("*[name='status']").hide(200);
 			$("#" + status).show(200);
+
+			if(status != "content")
+				$("#commentbox").css('display', 'none');
+			else 
+				$("#commentbox").css('display', 'block');
+
+			if(imgid != -1) {
+				if(status != 'loginbox' || status != 'regbox') {
+					$("#icon").attr('src', 'icons/' + imgid + '.jpg');
+					$('#nickname').html(nickname);
+					$("#iconbox").css("display", "block");
+				}
+				else {
+					$("#iconbox").css("display", "none");
+				}
+			}
+
+
 		}
 		function checkKey(event) {
 			if(event.keyCode == 13) {
@@ -227,6 +253,25 @@ function showLoginBox() {
 		var logined = false;
 		var typelist = [];
 		var titlelist = [];
+		var imgid = -1;
+		var nickname = 'fnhn';
 		window.onload = function() {
+			$.post('islogined.php').done(function(data) {
+				data = JSON.parse(data);
+				
+				if(data['message'] == 'yes') {
+					nickname = data['nickname'];
+					imgid = data['imgid'];
+
+
+					$("#icon").attr('src', 'icons/' + imgid + '.jpg');
+					$('#nickname').html(nickname);
+					$("#iconbox").css("display: block");
+				}
+
+				
+			});
+
+
 			update();
 		}

@@ -63,8 +63,9 @@
 
 	$password = md5($password);
 	$reg_time = date('Y-m-d');
+	$img_id = mt_rand(0, 40);
 
-	$query = "insert into User(username, password, email, img_id, reg_time) values('$username', '$password', '$email', 1, '$reg_time');";
+	$query = "insert into User(username, password, email, img_id, reg_time) values('$username', '$password', '$email', $img_id, '$reg_time');";
 	$result = $db->query($query);
 
 	if(!$result) {

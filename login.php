@@ -63,10 +63,17 @@
 		exit;
 	}
 
-	$data['suc'] = 1;
-	echo json_encode($data);
+	$arr = $result->fetch_assoc();
+
 
 	$_SESSION['logined'] = 1;
 	$_SESSION['username'] = $username;
+	$_SESSION['imgid'] = $arr['img_id'];
+
+
+	$data['suc'] = 1;
+	$data['imgid'] = $arr['img_id'];
+	$data['nickname'] = $username;
+	echo json_encode($data);
 
 ?>

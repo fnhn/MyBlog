@@ -3,6 +3,9 @@
 			padding: 0px;
 			font-family: '微软雅黑';
 		}
+		li {
+			list-style: none;
+		}
 		a {
 			text-decoration: none;
 		}
@@ -30,7 +33,7 @@
 			padding-left: 3%;
 		}
 		.content {
-			width: 70%;
+			width: 60%;
 			margin: auto;
 			padding-top: 4%;
 			display: none;
@@ -122,4 +125,52 @@
 		}
 		.codeimg {
 			width: 15%;
+		}
+		.iconbox {
+			position: fixed;
+			right: 2%;
+			top: 2%;
+			width: 4%;
+			text-align: center;
+		}
+		.iconbox img {
+			width: 100%;
+			border-radius: 50%;
+
+		}
+		.iconbox p {
+			font-size: 1.2em;
+		}
+		.commentbox {
+			width: 60%;
+			margin: 3% auto;
+		}
+
+		.commentbox .commentcontentbox {
+			width: 100%;
+			border: solid rgb(117, 185, 0) 3px;
+			height: 100px;
+		}
+
+		.commentbox button {
+			display: inline-block;
+			background-color: rgb(117, 185, 0);
+			width: 10%;
+			float: right;
+			border: none;
+			margin-top: 1%;
+			line-height: 2.0em;
+		}
+
+		.commentbox .commenthead {
+			background-color: rgb(117, 185, 0);
+			width: 12%;
+			line-height: 2.0em;
+			text-align: center;
+
+		}
+		.commentbox .hr {
+			background-color: rgb(117, 185, 0);
+			height: 2px;
+			margin-bottom: 1%;
 		}
