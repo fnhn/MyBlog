@@ -1,2 +1,2 @@
 # MyBlog
-Technical Blog
+fnhn.sinaapp.com
