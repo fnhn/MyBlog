@@ -10,7 +10,14 @@
 		exit;
 	}
 
-	$content = $_POST['content'];
+	$content = trim($_POST['content']);
+
+	if(!$content) {
+		$data['suc'] = 0;
+		$data['reason'] = 'You can not send a empty message.';
+		echo json_encode($data);
+		exit;
+	}
 
 	if(!get_magic_quotes_gpc()) {
 		$content = addslashes($content);
@@ -21,10 +28,12 @@
 
 	$articleid = $_SESSION['articleid'];
 	$userid = $_SESSION['userid'];
-	$time = date("H:m:s");
+	$time = date("H:i:s");
 	$date = date("Y-m-d");
 
-	@ $db = new mysqli('localhost', 'root', 'fnhn32', 'blog');
+	require('database.conf.php');
+
+	@ $db = new mysqli($db_host, $db_username, $db_password, $db_database, $db_port);
 
 	if(mysqli_connect_errno()) {
 		$data['suc'] = 0;

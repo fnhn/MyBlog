@@ -36,6 +36,9 @@
 			padding-top: 4%;
 			display: none;
 		}
+		.content img {
+			border-radius: 4px;
+		}
 		.loginbox {
 			text-align: center;
 			display: none;
@@ -130,6 +133,7 @@
 			top: 2%;
 			width: 4%;
 			text-align: center;
+			display: none;
 		}
 		.iconbox img {
 			width: 100%;

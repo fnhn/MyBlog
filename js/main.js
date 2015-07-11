@@ -26,10 +26,7 @@ function showLoginBox() {
 		}
 		function showArticleList() {
 			getTypeList();
-			if(status == 'articlelist')
-				return;
-			status="articlelist";
-			update();
+			
 		}
 		function showHome() {
 			if(status == 'home')
@@ -41,12 +38,15 @@ function showLoginBox() {
 			value = item.value;
 			$.post("getarticle.php", {id: value}).done(function(data) {
 				data = JSON.parse(data);
-				$("#content").html(data['content']);
+				articleend = '<br>（转载请注明来源fnhn.sinaapp.com ';
+				articleend += data['date'];
+				articleend += '）<br>';
+				$("#content").html(data['content'] + articleend);
+				articleid = value;
+				getCommentList();
 			});
-			articleid = value;
-			getCommentList();
-			status="content";
-			update();
+			
+			
 		}
 		function showRegBox() {
 			if(status == 'regbox')
@@ -219,6 +219,10 @@ function showLoginBox() {
 				else if(status == "regbox") {
 					reg();
 				}
+
+				if(event.ctrlKey && status == 'content') {
+					submitComment();
+				}
 			}
 		}
 		function getTypeList() {
@@ -229,7 +233,10 @@ function showLoginBox() {
 					html_content += "<li value=\"" + index + "\"><a onclick=\"getTitleList(this)\" href=\"javascript:void(0)\">" + typelist[index] + "</a></li>";
 				}
 				$("#typelist").html(html_content);
-
+				if(status == 'articlelist')
+				return;
+				status="articlelist";
+				update();
 			});
 		}
 
@@ -256,7 +263,7 @@ function showLoginBox() {
 			$.post('submitcomment.php', {content:content}).done(function(data) {
 				data = JSON.parse(data);
 				if(data.suc) {
-					getCommentList();
+					getCommentList(1);
 					$("#commenterror").html("");
 					$("#commentcontent").val("");
 				}
@@ -268,7 +275,7 @@ function showLoginBox() {
 			});
 		}
 
-		function getCommentList() {
+		function getCommentList(x) {
 			$.post('getcommentlist.php', {articleid: articleid}).done(function(data) {
 			
 				data = JSON.parse(data);
@@ -277,11 +284,16 @@ function showLoginBox() {
 
 				for(var index in data) {
 					prehtml += "<div class=\"commentwraper\"><div class=\"commenticon\"><img src=\"icons/" + data[index].imgid + ".jpg\"></img></div><div class=\"commenttext\"><b>" + data[index].nickname +"</b><b>" + data[index].date +" " + data[index].time + "</b>\
-						<p>" + data[index].content + "</p></div></div>";
+						<pre>" + data[index].content + "</pre></div></div>";
 				
 				}
 				
 				$("#oldcommentbox").html(prehtml);
+
+				if(x == 1)
+					return;
+				status = 'content';
+				update();
 				
 			});
 		}

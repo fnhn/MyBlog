@@ -8,7 +8,9 @@
 	$articleid = $_POST['articleid'];
 
 
-	@ $db = new mysqli('localhost', 'root', 'fnhn32', 'blog');
+	require('database.conf.php');
+
+	@ $db = new mysqli($db_host, $db_username, $db_password, $db_database, $db_port);
 	if(mysqli_connect_errno()) {
 		$data['suc'] = 0;
 		$data['reason'] = 'connect to the database failed.';
@@ -18,7 +20,7 @@
 
 	$db->query("set names 'utf8'");
 
-	$result = $db->query("select * from Comment where article_id = '$articleid'");
+	$result = $db->query("select * from Comment where article_id = '$articleid' order by date asc,time asc;");
 
 	$limit = $result->num_rows;
 

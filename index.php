@@ -2,9 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
-	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
-	<META HTTP-EQUIV="expires" CONTENT="0">
+	<meta name="baidu-site-verification" content="sR1ORMjc0T" />
+	<title>Fnhn's Blog | 非淡泊无以明志</title>
 
 	<link rel="stylesheet" href="css/main.css" />
 	<script type="text/javascript" src="js/jq.js"></script>
@@ -14,10 +13,10 @@
 	<div id="sidebar" class="sidebar">
 		<ul>
 		<li>
-			<a href="javascript:showHome()"><img src="picture/home.png" /></a>
+			<a href="javascript:showHome()"><img src="picture/home.png" title="Home"/></a>
 		</li>
-		<li><a href="javascript:showArticleList()"><img src="picture/document.png" /></a></li>
-		<li><a href="javascript:showLoginBox()"><img src="picture/login.png" /></a></li>
+		<li><a href="javascript:showArticleList()"><img src="picture/document.png" title="Article"/></a></li>
+		<li><a href="javascript:showLoginBox()"><img src="picture/login.png" title="Login" /></a></li>
 	</div>
 	
 	<div class="container">
@@ -26,8 +25,6 @@
 			</ul>
 		</div>
 		<div class="content" id="content" name="status">
-			<h1>This is the content.</h1>
-
 		</div>
 		<div class="home" id="home" name="status">
 			Welcome to Fnhn's Blog.
@@ -74,9 +71,11 @@
 		</div>
 		<div class = "home" id="regsuc" name="status">
 			Register Success
+			<br><button class="btn" onclick="showLoginBox()">Login</button>
 		</div>
 		<div class = "home" id="loginsuc" name="status">
 			Login Success
+
 		</div>
 		<div class="iconbox" id="iconbox">
 			<img id="icon"></img>
@@ -91,8 +90,7 @@
 						<img src="icons/8.jpg"></img>
 					</div>
 					<div class="commenttext">
-						<b>nickname</b><b>2015-1-1 15:0:1</b>
-						<p>This is the comment.This is the comment.This is the comment.This is the comment.This is the comment.This is the comment.This is the comment.This is the comment.</p>
+						
 					</div>
 				</div>
 

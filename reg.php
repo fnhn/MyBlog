@@ -37,8 +37,9 @@
 		$email = addslashes($email);
 	}
 
-	@ $db = new mysqli('localhost', 'root', 'fnhn32', 'blog');
+	require('database.conf.php');
 
+	@ $db = new mysqli($db_host, $db_username, $db_password, $db_database, $db_port);
 	if(mysqli_connect_errno()) {
 		$data['suc'] = 0;
 		$data['reason'] = 'connect to the database failed.';
@@ -63,7 +64,7 @@
 
 	$password = md5($password);
 	$reg_time = date('Y-m-d');
-	$img_id = mt_rand(0, 40);
+	$img_id = mt_rand(1, 40);
 
 	$query = "insert into User(username, password, email, img_id, reg_time) values('$username', '$password', '$email', $img_id, '$reg_time');";
 	$result = $db->query($query);

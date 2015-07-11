@@ -7,8 +7,9 @@
 	if(!$id)
 		exit;
 	
+	require('database.conf.php');
 
-	@ $db = new mysqli('localhost', 'root', 'fnhn32', 'blog');
+	@ $db = new mysqli($db_host, $db_username, $db_password, $db_database, $db_port);
 	if(mysqli_connect_errno()) {
 		echo "connect database failed.";
 	}
@@ -16,9 +17,10 @@
 		$id = addslashes($id);
 	}
 	$db->query("set names 'utf8'");
-	$article= $db->query("select content from Article where id = $id");
+	$article= $db->query("select content,time from Article where id = $id");
 	$arr = $article->fetch_assoc();
 	$data['content'] = stripslashes($arr['content']);
+	$data['date'] = $arr['time'];
 
 	$db->close();
 

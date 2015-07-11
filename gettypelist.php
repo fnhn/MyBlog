@@ -3,7 +3,9 @@
 	$data = array();
 	
 
-	@ $db = new mysqli('localhost', 'root', 'fnhn32', 'blog');
+	require('database.conf.php');
+
+	@ $db = new mysqli($db_host, $db_username, $db_password, $db_database, $db_port);
 	if(mysqli_connect_errno()) {
 		echo "connect database failed.";
 	}
